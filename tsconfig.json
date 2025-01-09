@@ -1,0 +1,13 @@
+{
+  "extends": "@minko-fe/tsconfig/tsconfig.app",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"]
+    },
+    "rootDirs": [".", "./.react-router/types"],
+    "types": ["vite-plugin-i18n-ally/virtual", "vite-plugin-public-typescript/manifest"]
+  },
+  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", ".react-router/types/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
