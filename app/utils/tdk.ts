@@ -1,6 +1,6 @@
-import { type ServerRuntimeMetaDescriptor } from '@remix-run/server-runtime'
+import { type MetaDescriptor } from 'react-router'
 
-export function tdk({ t, d, k }: { t?: string; d?: string; k?: string }): ServerRuntimeMetaDescriptor[] {
+export function tdk({ t, d, k }: { t?: string; d?: string; k?: string }): MetaDescriptor[] {
   return [
     {
       title: t,
