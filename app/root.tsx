@@ -22,7 +22,7 @@ import { type Route } from './+types/root'
 import AntdConfigProvider from './components/antd-config-provider'
 import { ErrorBoundaryComponent } from './components/error-boundary'
 import globalCss from './css/global.css?url'
-import { i18nOptions } from './i18n/i18n'
+import { i18nOptions, localeCookie } from './i18n/i18n'
 import { i18nServer } from './i18n/i18n.server'
 import { resolveNamespace } from './i18n/namespace.client'
 import { getLanguages } from './i18n/resolver'
@@ -106,7 +106,9 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   return data(
     { locale, theme: getTheme() || Theme.LIGHT },
     {
-      headers: combineHeaders({ 'Set-Cookie': locale }),
+      headers: combineHeaders({
+        'Set-Cookie': await localeCookie.serialize(locale),
+      }),
     },
   )
 }
